@@ -9,7 +9,7 @@ const apiUrl = '';
   providedIn: 'root'
 })
 
-export class FetchApiDataService {
+export class UserRegistrationService {
   constructor(private http: HttpClient) { }
 
   //Registration Endpoint
