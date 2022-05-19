@@ -4,7 +4,11 @@ import { Observable, throwError, catchError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = '';
+const apiUrl = 'https://movie-api-jeremydelorme.herokuapp.com/';
+//get token from localStorage
+const token = localStorage.getItem('token');
+//get username from localStorage
+const username = localStorage.getItem('username');
 @Injectable({
   providedIn: 'root'
 })
