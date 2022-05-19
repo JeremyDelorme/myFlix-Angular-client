@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router'
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
@@ -18,25 +18,31 @@ export class UserLoginFormComponent implements OnInit {
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
-    public router: Router
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * function transfering the user data input to the server-side storage (database)
+   * @function userLogin
+   * @param userData
+   * @return user data in JSON format
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe((response) => {
-      console.log(response);
-      localStorage.setItem('user', response.user.Username);
-      localStorage.setItem('token', response.token);
+      localStorage.setItem("user", response.user.Username);
+      localStorage.setItem("token", response.token);
       this.dialogRef.close();
-      this.snackBar.open('You are logged in successfully', 'OK', {
+      console.log(response);
+      this.snackBar.open("user logged in", "OK", {
         duration: 2000
       });
-
-      this.router.navigate(['movies']);
+      this.router.navigate(["movies"]); //when user login successfully, navigate to the movielist
     }, (response) => {
-      this.snackBar.open(response, 'OK', {
+      console.log(response);
+      this.snackBar.open(response, "OK", {
         duration: 2000
       });
     });
