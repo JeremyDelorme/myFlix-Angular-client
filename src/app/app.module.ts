@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,6 +19,12 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
+import { AppRoutingModuleComponent } from './app-routing.module';
+import { DirectorComponent } from './director/director.component';
+import { GenreComponent } from './genre/genre.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SynopsisComponent } from './synopsis/synopsis.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -33,13 +38,18 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    DirectorComponent,
+    GenreComponent,
+    ProfileComponent,
+    SynopsisComponent,
+    NavbarComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
+    AppRoutingModuleComponent,
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
