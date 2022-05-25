@@ -27,7 +27,7 @@ export class UserLoginFormComponent implements OnInit {
   /**
    * function transfering the user data input to the server-side storage (database)
    * @function userLogin
-   * @param userData
+   * @param userCredentials
    * @return user data in JSON format
    */
   loginUser(): void {
