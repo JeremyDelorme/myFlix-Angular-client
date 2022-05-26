@@ -96,12 +96,13 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  addToFavoriteMovies(id: string): void {
-    console.log(id);
-    this.fetchApiData.addFavoriteMovies(id).subscribe((response) => {
-      console.log(response);
+  addToFavoriteMovies(id: string, title: string): void {
+    this.fetchApiData.addToFavoriteMovies(id).subscribe((resp: any) => {
+      this.snackBar.open(`${title} has been added to your favourites!`, 'OK', {
+        duration: 3000,
+      });
       this.ngOnInit();
-    })
+    });
   }
 
   removeFromFavoriteMovies(id: string): void {

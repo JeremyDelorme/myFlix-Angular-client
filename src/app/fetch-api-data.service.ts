@@ -112,18 +112,16 @@ export class UserRegistrationService {
     );
   }
   // Add A Movie To The List Of Favorites Endpoint
-  addFavoriteMovies(id: string): Observable<any> {
+  addToFavoriteMovies(id: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('username');
-    return this.http.post(apiUrl + `users/${username}/movies/${id}`, null, {
-      headers: new HttpHeaders(
-        {
+    const username = localStorage.getItem('user');
+    return this.http
+      .post(apiUrl + `users/${username}/movies/${id}`, null, {
+        headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // Remove A Movie From The List Of Favorites Endpoint
   deleteFavoriteMovies(id: string): Observable<any> {
